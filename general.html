@@ -40,6 +40,19 @@
             border-bottom: 3px solid white;
             width: 100%;
         }
+
+        .Sidebar h2 {
+            display: block;
+            color: black;
+            text-decoration: none;
+            margin: 15px 0;
+            font-size: 20px;
+            text-align: center;
+            transition: opacity 0.3s ease-in-out;
+            padding-bottom: 40px;
+            border-bottom: 3px solid white;
+            width: 100%;
+        }
         .sidebar a.active {
             background: #b4bca0;
             font-weight: bold;
@@ -90,20 +103,16 @@
             display: flex;
             flex-direction: column;
         }
-        .hero {
-            background: url('https://th.bing.com/th/id/OIP.0w2Ueya479JDjy_e0JDDIgHaEo?w=299&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7') no-repeat center center/cover;
-            height: 40vh;
-            color: black;
+        
+        .container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: left;
-            padding: 50px;
-            font-size: 50px;
-            font-weight: bold;
-            word-spacing: 10%;
-            letter-spacing: 30px;
+            justify-content: center;  /* Centers content horizontally */
+            align-items: center;      /* Centers content vertically */
+            height: 100vh;            /* Full height of the viewport */
+            width: 100%;              /* Full width */
         }
+
+
         .search-bar {
             display: flex;
             align-items: center;
@@ -127,56 +136,61 @@
         .search-bar svg {
             margin: 0 10px;
         }
-        .featured {
-            text-align: center;
+        
+        .main-content {
+            margin-left: 240px;
             padding: 20px;
         }
-        .destinations {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .pentagon {
-            width: 350px;
-            height: 297px;
-            position: relative;
-            overflow: hidden;
-            background: url('https://source.unsplash.com/300x300/?forest') center/cover;
-            clip-path: polygon(0% 30%, 50% 0%, 100% 30%, 100% 100%, 0% 100%);
-            margin: 20px auto;
-        }
-        .pentagon:hover {
-            transform: scale(1.1);
-        }
-        .pentagon-container {
-            display: inline-block;
-            margin: 10px;
-        }
-
-        .slideshow {
-            width: 200px;
-            height: 180px;
-            position: relative;
-            
-        }
         
-        .slide {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 1s ease-in-out;
-            opacity: 0;
-        }
-        
-        .slide.active {
-            opacity: 1;
-        }
 
         /* Remove underline from all links */
         a {
+            text-decoration: none;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px 0;
+        }
+
+        .tabs button {
+            background: #8c9472;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .destination {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .destination img {
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        .text {
+            flex: 1;
+        }
+
+        .text h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .details {
+            color: blue;
+            font-size: 14px;
             text-decoration: none;
         }
         
@@ -194,6 +208,7 @@
     </style>
 </head>
 <body>
+    
     <div class="sidebar" id="sidebar">
         <button class="toggle-btn" onclick="toggleSidebar()">⮜</button>
         <h2>WanderWise</h2>
@@ -204,12 +219,9 @@
         <a href="#">PLANNER</a>
         <a href="#">SETTINGS</a>
     </div>
+
     <div class="content">
-        <div class="hero">
-            <div>DISCOVER</div>
-            <div>NEW</div>
-            <div>PLACE</div>
-        </div>
+        
         <a href="search.html" class="search-link">
             <div class="search-bar">
                 <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
@@ -217,28 +229,9 @@
                 </svg>
                  <input type="text" placeholder="search">
             </div>
-        </a>
-
-        <div class="featured">
-            <h3>Featured destinations</h3>
-            <div class="destinations">
-                <div class="pentagon" style="background-image: url('https://th.bing.com/th/id/OIP.PaM4EdGXxpfJJ8r2UE_zzwHaEy?w=268&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7')"></div>
-                <div class="pentagon" style="background-image: url('https://th.bing.com/th/id/OIP.r_nLHCLaL0R7Mb-cz_8cuAHaEK?w=268&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7')"></div>
-                <div class="pentagon" style="background-image: url('https://th.bing.com/th/id/OIP.zSMsSPyeyAlzFnWv_mDFcQHaFj?w=234&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7')"></div>
-            </div>
-        </div>
-        <div class = "pentagon">
-            <div class = "slideshow">
-                <div class="slide active" style="background-image: url('https://i.pinimg.com/originals/80/ad/72/80ad728b228d9f3c475d1e8c2101dcbe.jpg');"></div>
-                <div class="slide" style="background-image: url('https://ts2.mm.bing.net/th?id=OIP.WYI6Fpz69kpw_RdT4kM2wwHaE8&pid=15.1');"></div>
-                <div class="slide" style="background-image: url('https://th.bing.com/th/id/OIP.FgzR2x_5BUAT-pwqYOCPVgHaE7?w=258&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');"></div>
-            </div>
-        </div>
-
-        
+        </a> 
     </div>
     
-    /* ADD SLIDESHOW
     
 
     <script>
@@ -253,30 +246,7 @@
                 content.classList.remove("expanded-content")
             }
         }
-        
-        let currentSlide = 0;
-        const slides = document.querySelectorAll(".slide");
-        
-        function showSlides() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove("active");
-                
-                if (index === currentSlide) {
-                    slide.classList.add("active");
-                }
-            });
-            
-            currentSlide = (currentSlide + 1) % slides.length;
-        }
-        
-        setInterval(showSlides, 3000); // Change image every 3 seconds
-
-
-
     </script>
 
 </body>
 </html>
-
-
-// create slideshow 
