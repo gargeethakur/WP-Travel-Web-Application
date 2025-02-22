@@ -175,6 +175,21 @@
             opacity: 1;
         }
 
+        /* Remove underline from all links */
+        a {
+            text-decoration: none;
+        }
+        
+        .search-link {
+            text-decoration: none;
+            color: inherit; /* Keeps text color same as parent */
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .search-link:visited {
+            color: inherit;
+        }
 
     </style>
 </head>
@@ -195,12 +210,15 @@
             <div>NEW</div>
             <div>PLACE</div>
         </div>
-        <div class="search-bar">
-            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
-                <path d="M10,2A8,8 0 0,1 18,10C18,12.08 17.22,14 15.91,15.41L21,20.5L19.5,22L14.41,16.91C13,18.22 11.08,19 9,19A8,8 0 0,1 1,11A8,8 0 0,1 10,2M10,4A6,6 0 0,0 4,10A6,6 0 0,0 10,16A6,6 0 0,0 16,10A6,6 0 0,0 10,4Z" />
-            </svg>
-            🔍 <input type="text" placeholder="search">
-        </div>
+        <a href="search.html" class="search-link">
+            <div class="search-bar">
+                <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M10,2A8,8 0 0,1 18,10C18,12.08 17.22,14 15.91,15.41L21,20.5L19.5,22L14.41,16.91C13,18.22 11.08,19 9,19A8,8 0 0,1 1,11A8,8 0 0,1 10,2M10,4A6,6 0 0,0 4,10A6,6 0 0,0 10,16A6,6 0 0,0 16,10A6,6 0 0,0 10,4Z" />
+                </svg>
+                 <input type="text" placeholder="search">
+            </div>
+        </a>
+
         <div class="featured">
             <h3>Featured destinations</h3>
             <div class="destinations">
@@ -216,9 +234,11 @@
                 <div class="slide" style="background-image: url('https://th.bing.com/th/id/OIP.FgzR2x_5BUAT-pwqYOCPVgHaE7?w=258&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');"></div>
             </div>
         </div>
+
+        
     </div>
     
-    // ADD SLIDESHOW
+    /* ADD SLIDESHOW
     
 
     <script>
@@ -257,3 +277,6 @@
 
 </body>
 </html>
+
+
+// create slideshow 
