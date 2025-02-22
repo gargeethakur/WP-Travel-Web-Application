@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e0e6d5, #cdd5c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .search-container {
+            background: #cdd5c4;
+            width: 85%;
+            height: 85%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .search-bar {
+            background: #99a285;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 18px;
+            flex-grow: 1;
+            margin-left: 10px;
+            color: white;
+        }
+        .search-icon {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        .filter-icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .popular-searches {
+            margin-top: 50px;
+            font-size: 18px;
+            color: #69735a;
+        }
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .search-item {
+            background: #99a285;
+            padding: 10px;
+            border-radius: 110px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-bar">
+            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                <path d="M10,2A8,8 0 0,1 18,10C18,12.08 17.22,14 15.91,15.41L21,20.5L19.5,22L14.41,16.91C13,18.22 11.08,19 9,19A8,8 0 0,1 1,11A8,8 0 0,1 10,2M10,4A6,6 0 0,0 4,10A6,6 0 0,0 10,16A6,6 0 0,0 16,10A6,6 0 0,0 10,4Z" />
+            </svg>
+            <input type="text" placeholder="search">
+            <span class="filter-icon">⚙️</span>
+        </div>
+        <div class="popular-searches">
+            ⭐ popular searches this month
+        </div>
+        <div class="search-grid">
+            <div class="search-item">⭐ Item 1</div>
+            <div class="search-item">⭐ Item 2</div>
+            <div class="search-item">⭐ Item 3</div>
+            <div class="search-item">Item 4</div>
+            <div class="search-item">Item 5</div>
+            <div class="search-item">Item 6</div>
+            <div class="search-item">Item 7</div>
+            <div class="search-item">Item 8</div>
+            <div class="search-item">Item 9</div>
+        </div>
+    </div>
+</body>
+</html>
