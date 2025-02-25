@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400&display=swap');
+       
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            background-color: #b5b9a7;
+            margin: 0;
+        }
+        .sidebar {
+            width: 220px;
+            background: #8a927b;
+            padding: 15px;
+            height: 100vh;
+            color: white;
+            font-size: 16px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            margin: 6px 0;
+            font-size: 16px;
+        }
+        .sidebar a.active {
+            background: #c2c6b6;
+            color: black;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #a1a997;
+            padding: 10px;
+            border-radius: 5px;
+            width: 60%;
+        }
+        .search-bar input {
+            border: none;
+            padding: 8px;
+            flex-grow: 1;
+            margin-left: 10px;
+            font-size: 18px;
+            background: transparent;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 18px;
+            align-items: center;
+        }
+        .filters label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filters input, .filters select {
+            padding: 8px;
+            font-size: 16px;
+            background: #e3e3d9;
+            border: none;
+        }
+        .filters img {
+            width: 20px;
+            height: 20px;
+        }
+        .save-btn {
+            margin-top: 20px;
+            padding: 12px;
+            background: #6b725c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .hotel-info {
+            margin-top: 20px;
+            font-size: 18px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#">app name</a>
+        <a href="#">DESTINATIONS</a>
+        <a href="#">BOOK TICKETS</a>
+        <a href="#" class="active">HOTELS</a>
+        <a href="#">PLANNER</a>
+        <a href="#">SETTINGS</a>
+    </div>
+    <div class="content">
+        <div class="search-bar">
+            <input type="text" placeholder="search">
+        </div>
+        <div class="filters">
+            <label>
+                <img src="city-icon.png" alt="City">
+                <input type="text" placeholder="city">
+            </label>
+            <label>
+                <img src="calendar-icon.png" alt="Check In">
+                <input type="date" placeholder="check in">
+            </label>
+            <label>
+                <img src="calendar-icon.png" alt="Check Out">
+                <input type="date" placeholder="check out">
+            </label>
+            <input type="number" placeholder="no. of rooms" min="1">
+            <input type="number" placeholder="guests" min="1">
+            <select>
+                <option>filter based on no. of stars</option>
+                <option>1 Star</option>
+                <option>2 Stars</option>
+                <option>3 Stars</option>
+                <option>4 Stars</option>
+                <option>5 Stars</option>
+            </select>
+        </div>
+        <div class="hotel-info">(filtered acc to preferences)</div>
+        <button class="save-btn">Save hotel preferences</button>
+    </div>
+</body>
+</html>
