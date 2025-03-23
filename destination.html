@@ -4,92 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel App</title>
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            display: flex;
-            height: 100vh;
-            background-color: #d4d9c7;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #7f8b6a;
-            padding: 20px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            transition: width 0.3s ease-in-out;
-        }
-        .sidebar a {
-            display: block;
-            color: black;
-            text-decoration: none;
-            margin: 15px 0;
-            font-size: 20px;
-            text-align: center;
-            transition: opacity 0.3s ease-in-out;
-            padding-bottom: 40px;
-            border-bottom: 3px solid white;
-            width: 100%;
-        }
-        .sidebar a.active {
-            background: #b4bca0;
-            font-weight: bold;
-        }
-        .sidebar a:hover {
-            background: #a2aa8f;
-        }
-        .toggle-btn {
-            position: absolute;
-            top: 300px;
-            right: -20px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            
-            cursor: pointer;
-            border-radius: 50%;
-            border: 1px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            transition: transform 0.3s ease-in-out;
-        }
-        .collapsed .toggle-btn {
-            transform: rotate(180deg);
-        }
-        .collapsed {
-            width: 60px;
-            padding: 0px;
-        }
-        .collapsed h2, .collapsed a {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .collapsed .toggle-btn {
-            right: -15px;
-        }
-        .content.expanded-content {
-            margin-left: 60px;
-        }
-        .expanded-content {
-            width: 100%;
-        }
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        
         .hero {
             background: url('https://th.bing.com/th/id/OIP.0w2Ueya479JDjy_e0JDDIgHaEo?w=299&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7') no-repeat center center/cover;
             height: 40vh;
@@ -240,18 +157,8 @@
 
     
 
-    <script>
-        function toggleSidebar() {
-            let sidebar = document.getElementById("sidebar");
-            let content = document.getElementById("content");
-            sidebar.classList.toggle("collapsed");
-            
-            if(sidebar.classList.contains("collapsed")) {
-                content.classList.add("expanded-content");
-            } else {
-                content.classList.remove("expanded-content")
-            }
-        }
+    <script src="sidebar.js">
+
         
         let currentSlide = 0;
         const slides = document.querySelectorAll(".slide");
