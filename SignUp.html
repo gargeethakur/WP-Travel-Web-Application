@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            width: 500px;
+            background: #f2f7eb;
+            border: 2px solid #808000;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: green;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 60%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #b4bca3;
+            border-radius: 3px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            background-color: black;
+            color: #b4bca3;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .user-icon {
+            float: right;
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Create-Account</h2>
+        
+        
+        <form>
+            <label>Username :</label>
+            <input type="text" required><br>
+
+            <label>Name :</label>
+            <input type="text" required><br>
+
+            <label>Email:</label>
+            <input type="email" required><br>
+
+            <label>Password :</label>
+            <input type="password" required><br>
+
+            <label>Security Question :</label>
+            <select>
+                <option>Your NickName?</option>
+                <option>Your Birth City?</option>
+                <option>Your First Pet?</option>
+            </select><br>
+
+            <label>Answer :</label>
+            <input type="text" required><br>
+
+            <div class="buttons">
+                <button type="submit">Create</button>
+                <button type="button" onclick="window.history.back();">Back</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

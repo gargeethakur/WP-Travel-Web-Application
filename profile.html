@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Welcome, <span id="profileUsername"></span>!</h2>
+    <p>Email: <span id="profileEmail"></span></p>
+
+    <button id="logout">Logout</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const username = localStorage.getItem("username");
+            const email = localStorage.getItem("email");
+
+            if (!username || !email) {
+                alert("No user found! Redirecting to login...");
+                window.location.href = "login.html";
+            }
+
+            document.getElementById("profileUsername").textContent = username;
+            document.getElementById("profileEmail").textContent = email;
+        });
+
+        document.getElementById("logout").addEventListener("click", function () {
+            localStorage.clear();
+            window.location.href = "login.html"; // Redirect to login
+        });
+    </script>
+</body>
+</html>

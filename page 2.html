@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; 
         }
         html, body {
             height: 100%;
@@ -149,14 +149,87 @@
         .nav-button:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+/* Login box */
+        .login-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 900px;
+            height: 700px;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+/* Close button */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        #openLogin {
+            position: absolute;   /* Position it relative to the page */
+            top: 10px;           /* Distance from the top */
+            right: 20px;         /* Distance from the right */
+            background-color: #4CAF50; /* Green background */
+            color: white;        /* White text */
+            padding: 10px 15px;  /* Add padding */
+            border-radius: 5px;  /* Rounded corners */
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        #openLogin:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        #openSignup {
+            position: absolute;   /* Position it relative to the page */
+            top: 10px;           /* Distance from the top */
+            right: 95px;         /* Distance from the right */
+            background-color: #4CAF50; /* Green background */
+            color: white;        /* White text */
+            padding: 10px 15px;  /* Add padding */
+            border-radius: 5px;  /* Rounded corners */
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        #openSignup:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+
     </style>
 </head>
 <body>
     <div class="sidebar" id="sidebar">
         <button class="toggle-btn" onclick="toggleSidebar()">⮜</button>
         <h2>WanderWise</h2>
-        <a href="#" class="nav-button">DESTINATIONS</a>
-        <a href="#" class="nav-button">BOOK TICKETS</a>
+        <a href="D:\BTech Nmims\Tech 2nd year\Sem IV\app dev\destination.html" class="nav-button">DESTINATIONS</a>
+        <a href="D:\BTech Nmims\Tech 2nd year\Sem IV\app dev\r3.html" class="nav-button">BOOK TICKETS</a>
         <a href="#" class="nav-button">HOTELS</a>
         <a href="#" class="nav-button">PLANNER</a>
         <a href="#" class="nav-button">SETTINGS</a>
@@ -164,12 +237,29 @@
     <div class="content" id="content">
         <div class="hero">
             <div>Welcome to WanderWise!</div>
+            <button id="openLogin">Login</button>
+            <button id="openSignup">Sign Up</button>
+
             <p class="why-choose">Why choose us?</p>
         </div>
+        
+        <div id="loginOverlay" class="overlay">
+            <iframe src="login.html" class="login-frame"></iframe>
+            <span class="close-btn" id="closeLogin">&times;</span>
+        </div>
+
+        <div id="SignUpOverlay" class="overlay">
+            <iframe src="SignUp.html" class="login-frame"></iframe>
+            <span class="close-btn" id="closeSignUp">&times;</span>
+        </div>
+                
+            
         <div class="info">
-            <div>Your paragraph text</div>
-            <div>Your paragraph text</div>
-            <div>Your paragraph text</div>
+            <div> <b>Accommodation Services </b> <br>
+
+                Partnering with hotels, resorts, and homestays for comfortable stays.</div>
+            <div><b> Transportation Services </b> <br> Providing car rentals, airport transfers, and local transport solutions.</div>
+            <div><b>Tour Guide Services </b><br> Professional guides for historical, cultural, and adventure tours,Organizing trips around major events, festivals, and exhibitions.</div>
         </div>
     </div>
 
@@ -185,6 +275,52 @@
                 content.classList.remove("expanded-content")
             }
         }
+
+        // Get elements
+        const loginOverlay = document.getElementById("loginOverlay");
+        const openLogin = document.getElementById("openLogin");
+        const closeLogin = document.getElementById("closeLogin");
+
+// Show login overlay when button is clicked
+        openLogin.addEventListener("click", () => {
+        loginOverlay.style.display = "block";
+        });
+
+// Hide login overlay when close button is clicked
+        closeLogin.addEventListener("click", () => {
+        loginOverlay.style.display = "none";
+        });
+
+// Hide login overlay when clicking outside the iframe
+        window.addEventListener("click", (event) => {
+            if (event.target === loginOverlay) {
+                loginOverlay.style.display = "none";
+            }
+        });
+
+        // Get elements for SignUp
+        const signUpOverlay = document.getElementById("SignUpOverlay");
+        const openSignUp = document.getElementById("openSignup");
+        const closeSignUp = document.querySelector("#SignUpOverlay .close-btn");
+
+// Show signup overlay when button is clicked
+        openSignUp.addEventListener("click", () => {
+            signUpOverlay.style.display = "block";
+        });
+
+// Hide signup overlay when close button is clicked
+        closeSignUp.addEventListener("click", () => {
+            signUpOverlay.style.display = "none";
+        });
+
+// Hide signup overlay when clicking outside the iframe
+        window.addEventListener("click", (event) => {
+            if (event.target === signUpOverlay) {
+                signUpOverlay.style.display = "none";
+            }
+        });
+
+
     </script>
 </body>
 </html>

@@ -56,6 +56,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-top: 30px;
+            cursor: pointer;
         }
         .search-item {
             background: #99a285;
@@ -77,7 +78,8 @@
             <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
                 <path d="M10,2A8,8 0 0,1 18,10C18,12.08 17.22,14 15.91,15.41L21,20.5L19.5,22L14.41,16.91C13,18.22 11.08,19 9,19A8,8 0 0,1 1,11A8,8 0 0,1 10,2M10,4A6,6 0 0,0 4,10A6,6 0 0,0 10,16A6,6 0 0,0 16,10A6,6 0 0,0 10,4Z" />
             </svg>
-            <input type="text" placeholder="search">
+            <input type="text" id="searchInput" placeholder="search">
+            <button onclick="searchDestination()">Search</button>
             <span class="filter-icon">⚙️</span>
         </div>
         <div class="popular-searches">
@@ -95,5 +97,21 @@
             <div class="search-item">Item 9</div>
         </div>
     </div>
+
+    <script>
+    
+    function searchDestination() {
+        let query = document.getElementById("searchInput").value;
+        
+        if (query.toLowerCase() === "mahabhaleshwar") {
+            localStorage.setItem("destination", query); // Store search query
+            window.location.href = "dest2attractions.html";  // Redirect to destination page
+        } else {
+            alert("Destination not found!");
+        }
+    }
+
+    </script>
+    
 </body>
 </html>
