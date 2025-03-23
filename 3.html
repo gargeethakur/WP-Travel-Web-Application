@@ -15,7 +15,7 @@
             display: flex;
             height: 100vh;
             background-color: #d4d9c7;
-           
+            overflow-x: hidden;
         }
 
         /* Sidebar */
@@ -31,7 +31,7 @@
             position: relative;
             transition: width 0.3s ease-in-out;
         }
-       .Sidebar h2 {
+       .sidebar h2 {
             display: block;
             color: black;
             text-decoration: none;
@@ -63,10 +63,38 @@
             background: #a2aa8f;
         }
 
+        .sidebar ul {
+            list-style: none;
+            padding:0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid white;
+            cursor: pointer;
+        }
+
+        .sidebar li.active {
+            background: #c8cfb1;
+            color: black;
+            font-weight: bold;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            cursor: pointer;
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
         /* Sidebar Toggle */
         .toggle-btn {
             position: absolute;
-            top: 50%;
+            top: 300px;
             right: -20px;
             width: 40px;
             height: 40px;
@@ -83,15 +111,15 @@
         }
         .collapsed .toggle-btn {
             transform: rotate(180deg);
-            right: -15px;
+            
         }
         .collapsed {
             width: 60px;
-             padding: 0px;
+            padding: 0px;
         }
         .collapsed h2, .collapsed a {
-            display: none;
-             opacity: 0;
+           
+            opacity: 0;
             pointer-events: none;
         }
         .content.expanded-content {
@@ -331,28 +359,31 @@
             flex: 1;
         }
         .transport-options, .feature-options {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-    .transport-btn, .feature-btn {
-        background: #8a927b;
-        border: none;
-        padding: 10px 15px;
-        font-size: 16px;
-        color: white;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-    }
-    .transport-btn img {
-        width: 20px;
-        height: 20px;
-    }
-    .feature-btn {
-        background: #6b725c;
-    }
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 20px 0;
+            margin-top: 10px;
+        }
+
+        .transport-btn, .feature-btn {
+            background: #8c9472;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .transport-btn:hover, .feature-btn:hover {
+            background: #a2aa8f;
+        }
+        .transport-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        .feature-btn {
+            background: #6b725c;
+        }
 
 
     </style>
