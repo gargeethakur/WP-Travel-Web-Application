@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Wishlist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #e91e63;
+      margin-bottom: 40px;
+    }
+
+    #wishlistContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wishlist-item {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .wishlist-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .wishlist-item h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .wishlist-item .price {
+      font-size: 1.1rem;
+      color: #2ecc71;
+      font-weight: 600;
+    }
+
+    .empty-message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .remove-btn:hover {
+      color: #e91e63;
+    }
+
+    .wishlist-item::before {
+      content: "💖";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.5rem;
+    }
+</style>
+
+  </style>
+</head>
+<body>
+  <h1>🧡 Your Wishlist</h1>
+  <div id="wishlistContainer"></div>
+
+  <script>
+    const wishlistContainer = document.getElementById("wishlistContainer");
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (wishlist.length === 0) {
+      wishlistContainer.innerHTML = "<p class='empty-message'>No items in your wishlist yet.</p>";
+    } else {
+      wishlist.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("wishlist-item");
+        itemDiv.innerHTML = `
+          <h3>${item.title}</h3>
+          <p class="price">${item.price}</p>
+        `;
+        wishlistContainer.appendChild(itemDiv);
+      });
+    }
+  </script>
+</body>
+</html>
