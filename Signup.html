@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Centered Form Styles */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Headings */
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #ffa500; /* Orange color like the login button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e69500; /* Slightly darker shade */
+}
+
+/* Links */
+p {
+    font-size: 14px;
+}
+
+p a {
+    text-decoration: none;
+    color: #ffa500;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+.google-login .btn {
+    background-color: #d81a23;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.google-login .btn:hover {
+    background-color: #c1b61d;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="email" id="signup-email" placeholder="Email">
+        <input type="password" id="signup-password" placeholder="Password">
+        <button onclick="signup()">Create Account</button>
+        <p>OR</p>
+        <div class="google-login"
+        data-client_id="162168267400-6m5qbe1svdsqqse54qelkm3ths3neiof.apps.googleusercontent.com"
+        data-login_uri="http://localhost:3000/auth/google"
+data-auto_prompt="false">
+            <button id="google-login-btn" class="btn">Login with Google</button>
+          
+        
+        <!-- Google Sign-In Button -->
+
+
+<!-- Google API Script -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    </div>
+
+    <script>
+         async function signup() {
+        const username = document.getElementById('signup-username').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+
+        // Check if any field is empty
+        if (!username || !email || !password) {
+            alert('Please fill in all the fields.');
+            return;
+        }
+
+        // Proceed with registration
+        const response = await fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username, email, password })
+        });
+
+        if (response.ok) {
+            alert('Account created successfully');
+            window.location.href = 'travel.html';
+        } else {
+            alert('Error creating account. Please try again.');
+        }
+    }
+       
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        function handleGoogleLogin(response) {
+            console.log("Google User Token: ", response.credential);
+    
+            // Send this token to the backend for verification
+            fetch('http://localhost:3000/google-login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: response.credential })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Login successful!");
+                    window.location.href = "dashboard.html";
+                } else {
+                    alert("Google login failed.");
+                }
+            })
+            .catch(err => console.error("Error:", err));
+        }
+    
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: "162168267400-6m5qbe1svdsqqse54qelkm3ths3neiof.apps.googleusercontent.com",
+                callback: handleGoogleLogin
+            });
+    
+            google.accounts.id.renderButton(
+                document.getElementById("google-login-btn"),
+                { theme: "outline", size: "large" }
+            );
+        };
+    </script>
+    
+</body>
+</html>
