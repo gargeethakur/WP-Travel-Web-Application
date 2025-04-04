@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Rewards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="rewards-container">
+    <h2>My Rewards</h2>
+    
+    <p>Earn <strong>100 points</strong> to unlock a <strong>free Supersie!</strong></p>
+
+    <div class="rewards-box">
+      <h3>Your Reward Points: <span id="reward-points">0</span></h3>
+      
+      <!-- Progress bar -->
+      <div style="background-color: #ddd; border-radius: 10px; overflow: hidden; width: 100%; max-width: 300px; height: 20px; margin: 15px auto;">
+        <div id="progress-bar" style="height: 100%; width: 0%; background-color: #27ae60;"></div>
+      </div>
+    </div>
+
+    <button class="earn-btn" onclick="earnPoints()">Book Now & Earn Points</button>
+  </div>
+
+  <script>
+    
+    async function fetchRewards() {
+    
+      const userId = localStorage.getItem("user_id");
+      if (!userId) {
+        alert("Please log in to see your rewards.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3000/rewards/get-points/${userId}`);
+        const data = await response.json();
+        const points = data.points;
+        document.getElementById("reward-points").innerText = points;
+        updateProgressBar(points);
+      } catch (error) {
+        console.error("Error fetching rewards:", error);
+      }
+    }
+
+    async function earnPoints() {
+      const userId = localStorage.getItem("user_id");
+      if (!userId) {
+        alert("Please log in to earn rewards.");
+        return;
+      }
+
+      try {
+        await fetch("http://localhost:3000/rewards/add-points", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: userId, points: 100 })
+        });
+
+        alert("Booking successful! You've earned 100 reward points.");
+        fetchRewards();
+      } catch (error) {
+        console.error("Error adding points:", error);
+      }
+    }
+
+    function updateProgressBar(points) {
+      const goal = 100;
+      const progress = Math.min((points / goal) * 100, 100);
+      document.getElementById("progress-bar").style.width = progress + "%";
+
+      if (points >= goal) {
+        alert("🎉 Congrats! You’ve earned a free Supersie!");
+      }
+    }
+
+    fetchRewards();
+  </script>
+
+  
+<style>
+    /* General Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, #dfa843, #e97b80);
+        text-align: center;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Rewards Container */
+    .rewards-container {
+        background: white;
+        padding: 30px;
+        width: 40%;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        transform: scale(1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .rewards-container:hover {
+        transform: scale(1.05);
+    }
+
+    /* Rewards Box */
+    .rewards-box {
+        font-size: 22px;
+        color: #333;
+        padding: 15px;
+        border: 3px solid #f39c12;
+        display: inline-block;
+        border-radius: 8px;
+        margin: 15px 0;
+        background: #fdf6e3;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Styles */
+    .earn-btn {
+        background: linear-gradient(to right, #f39c12, #e74c3c);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .earn-btn:hover {
+        background: linear-gradient(to right, #e74c3c, #f39c12);
+        transform: scale(1.1);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    }
+</style>
+</body>
+</html>
