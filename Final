@@ -807,6 +807,208 @@ background-color: #333;}
   .wishlist-btn:hover {
     background-color: #e91e63;
   }
+  #chatbotBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  #chatbotBtn:hover {
+    transform: scale(1.1);
+  }
+
+  #chatbotIframeWrapper {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 400px;
+    height: 500px;
+    display: none;
+    z-index: 999;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+    background: #fff;
+  }
+  .floating-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #6C63FF;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.floating-btn:hover {
+  background-color: #4a47a3;
+  transform: scale(1.1);
+}
+
+.floating-btn i {
+  pointer-events: none;
+}
+.mood-itinerary-section {
+  padding: 40px 20px;
+  background: #f9f9ff;
+  text-align: center;
+}
+
+.mood-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.mood-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.mood-btn {
+  background: linear-gradient(to right, #ff8c00, #ff4bff);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.mood-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff8c00, #ff4b2b);
+}
+
+.itinerary-result {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  font-size: 1.5rem;
+  color: #333;
+}
+.connect-section {
+  padding: 3rem 2rem;
+  background: #fefefe;
+  text-align: center;
+}
+
+.connect-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active-tab {
+  display: block;
+}
+
+.match-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.match-form input,
+.match-form select {
+  padding: 0.6rem;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.match-form button {
+  padding: 0.7rem 1.5rem;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.match-form button:hover {
+  background: #ff3b3b;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.experience-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.experience-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
     </style>
 </head>
 <body>
@@ -833,6 +1035,20 @@ background-color: #333;}
             <a href="wishlist.html" class="wishlist-icon" title="View Wishlist">
                 <i class="fas fa-heart"></i>
               </a>
+              <img src="chatbot.png" alt="Chatbot" id="chatbotBtn">
+              <a href="#moodItinerary" class="floating-btn" title="Plan by Mood">
+                <i class="fas fa-magic"></i>
+              </a>
+              
+
+<div id="chatbotIframeWrapper">
+  <iframe 
+    src="https://www.chatbase.co/chatbot-iframe/p6l8tFTfSUtFHoUSUAHOI" 
+    width="400" 
+    height="500" 
+    allow="microphone;"
+  ></iframe>
+</div>
               
 
             
@@ -884,7 +1100,30 @@ background-color: #333;}
           </div>
       </section>
 
-
+      <section id="moodItinerary" class="mood-itinerary-section">
+        <h2 class="mood-heading">Choose Your Travel Mood</h2>
+        <div class="mood-options">
+          <button class="mood-btn" data-mood="adventurous">
+            🧗‍♀️ Adventurous
+          </button>
+          <button class="mood-btn" data-mood="romantic">
+            💖 Romantic
+          </button>
+          <button class="mood-btn" data-mood="relaxing">
+            🧘 Relaxing
+          </button>
+          <button class="mood-btn" data-mood="cultural">
+            🏛️ Cultural
+          </button>
+          <button class="mood-btn" data-mood="party">
+            🎉 Party
+          </button>
+        </div>
+      
+        <div class="itinerary-result" id="itineraryResult">
+          <p>Select a mood to see your custom travel plan!</p>
+        </div>
+      </section>
 
       <section class="book" id="book">
         <h1 class="heading">
@@ -1208,7 +1447,74 @@ background-color: #333;}
     </div>
 
 
-
+    <section id="connectExplore" class="connect-section">
+        <h2 class="heading">
+        <span>c</span>
+          <span>o</span>
+          <span>n</span>
+          <span>n</span>
+          <span>e</span>
+          <span>c</span>
+          <span>t</span>
+          <span>&</span>
+          <span>e</span>
+          <span>x</span>
+          <span>p</span>
+          <span>l</span>
+          <span>o</span>
+          <span>r</span>
+          <span>e</span>
+    </h2>
+    
+      
+        <!-- Tabs -->
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="showTab('compatibility')">Find Travel Buddy</button>
+          <button class="tab-btn" onclick="showTab('marketplace')">Local Experiences</button>
+        </div>
+      
+        <!-- Tab Content: Travel Compatibility Matching -->
+        <div id="compatibility" class="tab-content active-tab">
+          <h3>Travel Compatibility Matching</h3>
+          <p>Find fellow travelers who share your vibe, split costs, or plan together.</p>
+          <form class="match-form">
+            <input type="text" placeholder="Destination">
+            <select>
+              <option>Travel Style</option>
+              <option>Adventurous</option>
+              <option>Relaxed</option>
+              <option>Budget</option>
+              <option>Luxury</option>
+            </select>
+            <input type="date" placeholder="Start Date">
+            <input type="date" placeholder="End Date">
+            <button type="submit">Find Matches</button>
+          </form>
+        </div>
+      
+        <!-- Tab Content: Local Interaction Marketplace -->
+        <div id="marketplace" class="tab-content">
+          <h3>Local Interaction Marketplace</h3>
+          <p>Book real experiences hosted by locals—home meals, art walks, cultural workshops, and more.</p>
+          <div class="experience-grid">
+            <div class="experience-card">
+              <img src="localfood.jpg" alt="Dinner with Locals">
+              <h4>Home-Cooked Dinner</h4>
+              <p>Enjoy a traditional meal with a local family in Tokyo.</p>
+            </div>
+            <div class="experience-card">
+              <img src="artwalk.jpg" alt="Art Tour">
+              <h4>Street Art Walk</h4>
+              <p>Explore hidden murals and graffiti with an artist guide in Berlin.</p>
+            </div>
+            <div class="experience-card">
+              <img src="dance.jpg" alt="Dance Lesson">
+              <h4>Flamenco Dance Class</h4>
+              <p>Join a passionate dancer for an hour of Spanish flair in Seville.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
        <section class="services" id="services">
 
@@ -1597,8 +1903,13 @@ background-color: #333;}
         alert('Login successful (For now, backend not connected)');
         // If backend is available, replace with actual fetch request
     }
+       // chatbotttt
+       const btn = document.getElementById("chatbotBtn");
+  const chatbot = document.getElementById("chatbotIframeWrapper");
 
- 
+  btn.addEventListener("click", () => {
+    chatbot.style.display = chatbot.style.display === "none" ? "block" : "none";
+  });
         videoBtn.forEach(btn => {
         btn.addEventListener('click', () => {
        document.querySelector('.controls .active').classList.remove('active');
@@ -1697,6 +2008,76 @@ function addToWishlist(title, price) {
                 </div>
             `).join('');
         }
+       
+  document.querySelector('.floating-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#moodItinerary').scrollIntoView({ behavior: 'smooth' });
+  });
+  const itineraries = {
+  adventurous: {
+    heading: "Top Adventurous Destinations 🧗‍♂️",
+    places: [
+      "Leh-Ladakh – Biking & Mountains",
+      "Rishikesh – River Rafting & Bungee Jump",
+      "Jim Corbett – Jungle Safari",
+      "Spiti Valley – High-altitude thrills"
+    ]
+  },
+  romantic: {
+    heading: "Romantic Getaways 💞",
+    places: [
+      "Udaipur – The City of Lakes",
+      "Manali – Cozy Cabins & Snow",
+      "Alleppey – Houseboat in Backwaters",
+      "Andaman – Beachside Candlelight"
+    ]
+  },
+  relaxing: {
+    heading: "Relaxing Escapes 🌿",
+    places: [
+      "Kerala – Ayurvedic Bliss",
+      "Coorg – Coffee & Calm",
+      "Pondicherry – Serene French Vibes",
+      "Munnar – Tea Gardens & Peace"
+    ]
+  },
+  cultural: {
+    heading: "Cultural Rich Spots 🏛️",
+    places: [
+      "Jaipur – Forts & Royalty",
+      "Varanasi – Ganga Aarti",
+      "Hampi – Ancient Ruins",
+      "Kolkata – Arts & Heritage"
+    ]
+  },
+  party: {
+    heading: "Party Places 🎉",
+    places: [
+      "Goa – Beach Parties & EDM",
+      "Mumbai – Rooftop Bars",
+      "Bangalore – Microbreweries & Music",
+      "Pune – Nightlife Scene"
+    ]
+  }
+};
+
+document.querySelectorAll('.mood-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const mood = button.getAttribute('data-mood');
+    const itinerary = itineraries[mood];
+    
+    const listHTML = itinerary.places.map(place => `<li> * ${place}</li>`).join("");
+
+    document.getElementById('itineraryResult').innerHTML = `
+      <h3>${itinerary.heading}</h3>
+      <ul style="text-align:left; list-style: none; padding-left: 0;">
+        ${listHTML}
+      </ul>
+    `;
+  });
+});
+
+
 
         function searchTrains() {
             const from = document.getElementById('trainFrom').value;
@@ -1724,6 +2105,46 @@ function addToWishlist(title, price) {
                 </div>
             `).join('');
         }
+        // explore
+
+        function showTab(tabId) {
+  const tabs = document.querySelectorAll(".tab-content");
+  const buttons = document.querySelectorAll(".tab-btn");
+  
+  tabs.forEach(tab => tab.classList.remove("active-tab"));
+  buttons.forEach(btn => btn.classList.remove("active"));
+
+  document.getElementById(tabId).classList.add("active-tab");
+  event.target.classList.add("active");
+}
+document.querySelector(".match-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const destination = this.querySelector("input[type='text']").value;
+  const style = this.querySelector("select").value;
+  const startDate = this.querySelector("input[type='date']").value;
+  const endDate = this.querySelectorAll("input[type='date']")[1].value;
+
+  fetch("/api/find-matches", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      destination,
+      style,
+      startDate,
+      endDate
+    }),
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("Matches found: " + JSON.stringify(data));
+    // You can display them dynamically instead of alert.
+  })
+  .catch(err => {
+    alert("Error finding matches.");
+    console.error(err);
+  });
+});
     </script>
 
 </body>
